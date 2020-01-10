@@ -26,6 +26,7 @@ steps:
 - script: |
     mkdir $(TEST_REPORT_PATH)
     npm run test
+    ls -LR
   displayName: 'npm test -- --coverage'
 
 - task: PublishTestResults@2
