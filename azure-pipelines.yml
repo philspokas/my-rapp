@@ -1,7 +1,9 @@
-# Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+# Build React app for deployment
+#
+
+variables:
+  CI: 'true'
+  TEST_REPORT_PATH: './results'
 
 trigger:
 - master
@@ -26,7 +28,6 @@ steps:
 - script: |
     mkdir $(TEST_REPORT_PATH)
     npm run test
-    ls $(TEST_REPORT_PATH)
   displayName: 'npm test -- --coverage'
 
 - task: PublishTestResults@2
