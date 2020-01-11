@@ -21,9 +21,9 @@ steps:
     npm install
   displayName: 'npm install'
  
-- script: |
-    npm i -D jest-junit-reporter
-  displayName: 'install jest-junit-reporter'
+# - script: |
+#     npm i -D jest-junit-reporter
+#   displayName: 'install jest-junit-reporter'
 
 - script: |
     mkdir $(TEST_REPORT_PATH)
