@@ -1,5 +1,4 @@
 # Build React app for deployment
-#
 
 variables:
   CI: 'true'
@@ -21,10 +20,6 @@ steps:
     npm install
   displayName: 'npm install'
  
-# - script: |
-#     npm i -D jest-junit-reporter
-#   displayName: 'install jest-junit-reporter'
-
 - script: |
     mkdir $(TEST_REPORT_PATH)
     npm run test
