@@ -2,11 +2,12 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  # vmImage: 'ubuntu-latest'
+   vmImage: 'windows-2019'
 
 stages:
 - stage: Build
-  
+
   jobs:
   - job: build
     steps:
@@ -59,7 +60,7 @@ stages:
         appType: 'Web App on Windows'
         WebAppName: 'samplecrm-myrapp'
         packageForLinux: '$(System.DefaultWorkingDirectory)/drop'
-    
+
     - powershell: |
         $response = Invoke-WebRequest $(appservice.AppServiceApplicationUrl)
         if ($response.StatusCode -eq 200) {
@@ -71,5 +72,4 @@ stages:
         }
       displayName: 'PowerShell Script'
 
-  
-      
+
