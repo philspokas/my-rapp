@@ -8,9 +8,10 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-2019'
 
-#  vmImage: 'windows-2019'
+#  vmImage: 'ubuntu-latest'
+
 
 stages:
 - stage: Build
@@ -68,7 +69,9 @@ stages:
         azureSubscription: 'samplecrm-mspartner'
         appType: 'webApp'
         WebAppName: 'samplecrm-myrapp'
-        packageForLinux: '$(System.DefaultWorkingDirectory)/drop/*'
+        package: '$(System.DefaultWorkingDirectory)/drop/*'
+        enableCustomDeployment: true
+        DeploymentType: 'runFromZip'
 
     - powershell: |
         $response = Invoke-WebRequest $(appservice.AppServiceApplicationUrl)
