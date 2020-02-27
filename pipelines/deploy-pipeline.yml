@@ -72,16 +72,27 @@ stages:
         downloadPath: '$(System.ArtifactsDirectory)'
 
     - task: AzureRmWebAppDeployment@4
-      displayName: 'Deploy Azure App Service'
       inputs:
         ConnectionType: 'AzureRM'
         azureSubscription: 'samplecrm-mspartner'
         appType: 'webApp'
         WebAppName: 'samplecrm-myrapp'
-        package: '$(System.DefaultWorkingDirectory)/drop/build.zip'
+        packageForLinux: '$(System.DefaultWorkingDirectory)/drop/build.zip'
         enableCustomDeployment: true
         DeploymentType: 'zipDeploy'
         TakeAppOfflineFlag: false
+
+    # - task: AzureRmWebAppDeployment@4
+    #   displayName: 'Deploy Azure App Service'
+    #   inputs:
+    #     ConnectionType: 'AzureRM'
+    #     azureSubscription: 'samplecrm-mspartner'
+    #     appType: 'webApp'
+    #     WebAppName: 'samplecrm-myrapp'
+    #     package: '$(System.DefaultWorkingDirectory)/drop/build.zip'
+    #     enableCustomDeployment: true
+    #     DeploymentType: 'zipDeploy'
+    #     TakeAppOfflineFlag: false
 
     - powershell: |
         $response = Invoke-WebRequest $(appservice.AppServiceApplicationUrl)
@@ -97,13 +108,3 @@ stages:
 
 
 
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'samplecrm-mspartner'
-    appType: 'webApp'
-    WebAppName: 'samplecrm-myrapp'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/drop/build.zip'
-    enableCustomDeployment: true
-    DeploymentType: 'zipDeploy'
-    TakeAppOfflineFlag: false
