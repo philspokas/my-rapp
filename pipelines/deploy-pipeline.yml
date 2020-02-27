@@ -28,7 +28,8 @@ stages:
 
     - script: |
         mkdir $(TEST_REPORT_PATH)
-        npm run test --coverage
+        npm run test
+        # npm run test --coverage
       displayName: 'npm test'
 
     - task: PublishTestResults@2
