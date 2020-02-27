@@ -27,9 +27,9 @@ stages:
       displayName: 'npm install'
 
     - script: |
-      mkdir $(TEST_REPORT_PATH)
-      npm run test --coverage
-    displayName: 'npm test'
+        mkdir $(TEST_REPORT_PATH)
+        npm run test --coverage
+      displayName: 'npm test'
 
     - task: PublishTestResults@2
       inputs:
