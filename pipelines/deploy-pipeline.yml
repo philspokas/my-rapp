@@ -27,13 +27,14 @@ stages:
       displayName: 'npm install'
 
     - script: |
-        npm run test
-      displayName: 'npm test -- --coverage'
+      mkdir $(TEST_REPORT_PATH)
+      npm run test --coverage
+    displayName: 'npm test'
 
     - task: PublishTestResults@2
       inputs:
         testResultsFormat: 'JUnit'
-        testResultsFiles: '**/TEST-*.xml'
+        testResultsFiles: '$(TEST_REPORT_PATH)/test-report.xml'
 
     - script: |
         npm run build
