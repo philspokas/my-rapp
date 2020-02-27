@@ -77,9 +77,10 @@ stages:
         azureSubscription: 'samplecrm-mspartner'
         appType: 'webApp'
         WebAppName: 'samplecrm-myrapp'
-        package: '$(System.DefaultWorkingDirectory)/drop/*'
+        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
         enableCustomDeployment: true
-        DeploymentType: 'runFromZip'
+        DeploymentType: 'zipDeploy'
+        TakeAppOfflineFlag: false
 
     - powershell: |
         $response = Invoke-WebRequest $(appservice.AppServiceApplicationUrl)
