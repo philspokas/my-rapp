@@ -1,3 +1,9 @@
+# Build and Deploy React app for deployment
+
+variables:
+  CI: 'true'
+  TEST_REPORT_PATH: './results'
+
 trigger:
 - master
 
