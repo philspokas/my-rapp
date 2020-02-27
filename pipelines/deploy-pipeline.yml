@@ -8,7 +8,7 @@ trigger:
 - master
 
 pool:
-  # vmImage: 'ubuntu-latest'
+# vmImage: 'ubuntu-latest'
    vmImage: 'windows-2019'
 
 stages:
@@ -23,9 +23,10 @@ stages:
 
     - script: |
         mkdir $(TEST_REPORT_PATH)
-        # npm run test
-        npm run test --coverage
+        npm run test
       displayName: 'npm test'
+
+#         npm run test --coverage
 
     - task: PublishTestResults@2
       inputs:
@@ -59,10 +60,11 @@ stages:
     - task: AzureRmWebAppDeployment@4
       displayName: 'Deploy Azure App Service'
       inputs:
+        ConnectionType: 'AzureRM'
         azureSubscription: 'samplecrm-mspartner'
-        appType: 'Web App on Windows'
+        appType: 'webApp'
         WebAppName: 'samplecrm-myrapp'
-        packageForLinux: '$(System.DefaultWorkingDirectory)/drop'
+        package: '$(System.DefaultWorkingDirectory)/drop'
 
     - powershell: |
         $response = Invoke-WebRequest $(appservice.AppServiceApplicationUrl)
