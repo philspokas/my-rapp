@@ -8,10 +8,10 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-2019'
+  vmImage: 'ubuntu-latest'
 
-#  vmImage: 'ubuntu-latest'
-
+# npm test fails on windows-2019
+#  vmImage: 'windows-2019'
 
 stages:
 - stage: Build
@@ -30,7 +30,7 @@ stages:
 
     - script: |
         mkdir $(TEST_REPORT_PATH)
-        npm run test
+        npm run test --coverage
       displayName: 'npm test'
 
     - task: PublishTestResults@2
@@ -42,9 +42,17 @@ stages:
         npm run build
       displayName: 'npm build'
 
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/build'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/build.zip'
+        replaceExistingArchive: true'
+
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '$(System.DefaultWorkingDirectory)/build'
+        PathtoPublish: $(Build.ArtifactStagingDirectory)
         ArtifactName: 'drop'
         publishLocation: 'Container'
 
