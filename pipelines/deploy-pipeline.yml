@@ -77,7 +77,7 @@ stages:
         azureSubscription: 'samplecrm-mspartner'
         appType: 'webApp'
         WebAppName: 'samplecrm-myrapp'
-        packageForLinux: '$(System.DefaultWorkingDirectory)/drop/build.zip'
+        packageForLinux: '$(System.ArtifactsDirectory)/drop/build.zip'
         enableCustomDeployment: true
         DeploymentType: 'zipDeploy'
         TakeAppOfflineFlag: false
