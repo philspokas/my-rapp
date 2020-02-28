@@ -81,6 +81,7 @@ stages:
         enableCustomDeployment: true
         DeploymentType: 'zipDeploy'
         TakeAppOfflineFlag: false
+      name: appservice
 
     # - task: AzureRmWebAppDeployment@4
     #   displayName: 'Deploy Azure App Service'
