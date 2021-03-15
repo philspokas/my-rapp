@@ -40,3 +40,12 @@ jobs:
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
+  deploy-test:
+    name: Test Deployment
+    runs-on: ubunto-latest
+
+    steps:
+    - name: Deploy Test
+      run: echo 'The time was ${{ steps.hello.outputs.time }}'
+
+
