@@ -3,7 +3,7 @@ on:
     types: [created]
 
 env:
-  AZURE_WEBAPP_NAME: samplecrm-myrapp-test
+  AZURE_WEBAPP_NAME: amplecrm-myrapp
   AZURE_WEBAPP_PACKAGE_PATH: './build'
   NODE_VERSION: '10.x'
 
