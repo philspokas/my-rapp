@@ -42,7 +42,7 @@ jobs:
 
   deploy-test:
     name: Test Deployment
-    runs-on: ubunto-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Deploy Test
