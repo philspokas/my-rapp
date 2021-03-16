@@ -43,9 +43,11 @@ jobs:
   deploy-test:
     name: Test Deployment
     runs-on: ubuntu-latest
-
+    environment: test
+    needs: build-and-deploy
+    
     steps:
     - name: Deploy Test
-      run: echo 'The time was ${{ steps.hello.outputs.time }}'
+      run: echo 'github event name ${{ github.event_name }}'
 
 
