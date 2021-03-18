@@ -4,10 +4,8 @@
 name: my-rapp CI
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, dev/* ]
 
 jobs:
   build:

@@ -1,13 +1,7 @@
 name: deploy app
 
-# on:
-#   release:
-#     types: [created]
-
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
 env:
@@ -19,8 +13,6 @@ jobs:
     name: Build and Deploy
     environment: Dev
     runs-on: ubuntu-latest
-    env:
-      AZURE_WEBAPP_NAME: samplecrm-myrapp
 
     steps:
     - uses: actions/checkout@v2
@@ -35,6 +27,25 @@ jobs:
         npm ci
         npm run build --if-present
         npm test
+    - name: Upload build
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
+  deploy-dev:
+    name: Dev Deployment
+    environment: Dev
+    runs-on: ubuntu-latest
+    needs: build
+    env:
+      AZURE_WEBAPP_NAME: samplecrm-myrapp
+    
+    steps:
+    - name: Download a single artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: build
 
     - name: 'Deploy to Azure'
       uses: azure/webapps-deploy@v2
@@ -47,9 +58,9 @@ jobs:
     name: Test Deployment
     runs-on: ubuntu-latest
     environment: Test
+    needs: deploy-dev
     env:
       AZURE_WEBAPP_NAME: samplecrm-myrapp-test
-    needs: build-and-deploy
     
     steps:
     - uses: actions/checkout@v2
