@@ -18,6 +18,7 @@ env:
 jobs:
   build-and-deploy:
     name: Build and Deploy
+    environment: Dev
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -43,7 +44,7 @@ jobs:
   deploy-test:
     name: Test Deployment
     runs-on: ubuntu-latest
-    environment: test
+    environment: Test
     needs: build-and-deploy
     
     steps:
