@@ -11,7 +11,7 @@ function App() {
           do stuff in here: <code>src/App.js</code>, and then save to reload.
         </p>
         <p>
-          test 007 - update 1
+          test 008 - update 2
         </p>
         <a
           className="App-link"
