@@ -11,7 +11,7 @@ jobs:
       - run: bats -v
 
   check-context:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Dump GitHub context
         env:
