@@ -1,4 +1,5 @@
 
+[![deploy app](https://github.com/philspokas/my-rapp/actions/workflows/deploy.yml/badge.svg)](https://github.com/philspokas/my-rapp/actions/workflows/deploy.yml)
 [![Super-Linter](https://github.com/philspokas/my-rapp/actions/workflows/superlinter.yaml/badge.svg)](https://github.com/philspokas/my-rapp/actions/workflows/superlinter.yaml)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
