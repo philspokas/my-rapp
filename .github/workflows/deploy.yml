@@ -58,7 +58,7 @@ jobs:
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
     - name: Verify dev
-      run: ./tests/site_status.sh ${{ steps.dev-deploy.outputs.webapp-url }}
+      run: tests/site_status.sh  ${{ steps.dev-deploy.outputs.webapp-url }}
 
   deploy-test:
     name: Test Deployment
