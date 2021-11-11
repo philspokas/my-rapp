@@ -10,7 +10,7 @@ env:
 
 jobs:
   build:
-    name: Build and Deploy
+    name: build
     environment: Dev
     runs-on: ubuntu-latest
 
