@@ -1,7 +1,3 @@
-#!/bin/bash
-
-##name: site-status.sh
-
 FAIL_CODE=6
 
 check_status(){
